@@ -4,7 +4,8 @@ function Header({ setTodos, todos }) {
   const [todotext, setTodoText] = useState('');
   const formSubmit = (e) => {
     e.preventDefault();
-    setTodos([...todos, todotext]);
+    setTodos([...todos, { todoText: todotext, isCompleted: false }]);
+    setTodoText('');
   };
 
   return (
