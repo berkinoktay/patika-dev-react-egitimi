@@ -8,8 +8,7 @@ function List({ todos, completeTodo, deleteTodo }) {
         {todos.map((todo, index) => (
           <Todo
             todo={todo}
-            key={index}
-            id={index}
+            key={todo.id}
             completeTodo={completeTodo}
             deleteTodo={deleteTodo}
           />

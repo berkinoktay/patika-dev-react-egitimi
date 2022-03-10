@@ -1,10 +1,13 @@
 import { useState } from 'react';
-
+import { v4 as uuidv4 } from 'uuid';
 function Header({ setTodos, todos }) {
   const [todotext, setTodoText] = useState('');
   const formSubmit = (e) => {
     e.preventDefault();
-    setTodos([...todos, { todoText: todotext, isCompleted: false }]);
+    setTodos([
+      ...todos,
+      { id: uuidv4(), todoText: todotext, isCompleted: false },
+    ]);
     setTodoText('');
   };
 

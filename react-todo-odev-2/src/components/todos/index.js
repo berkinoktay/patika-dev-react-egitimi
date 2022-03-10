@@ -8,15 +8,15 @@ function Todos() {
 
   const completeTodo = (id) => {
     // Seçilen elemanın id'si ile todoların id'si ile eşleyeşen objeyi değişkene aktarıyoruz.
-    const updatedTodo = todos.find((todo, index) => index === id);
+    const updatedTodo = todos.find((todo) => todo.id === id);
     // Eşleşen array elemanının isCompleted verisini tam tersi ile değiştiriyoruz.
     updatedTodo.isCompleted = !updatedTodo.isCompleted;
     // Todos state'inde dönerek yine eşleşen id'yi bulup güncellenmiş veriyi yazıyoruz.
-    setTodos(todos.map((todo, index) => (index === id ? updatedTodo : todo)));
+    setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter((todo, index) => id !== index));
+    setTodos(todos.filter((todo) => id !== todo.id));
   };
   return (
     <div className="todo-container">
