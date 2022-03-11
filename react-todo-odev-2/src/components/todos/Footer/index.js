@@ -1,8 +1,13 @@
-function Footer() {
+import { useState, useEffect } from 'react';
+function Footer({ todos, setTodos }) {
+  const [unComplete, setUnComplete] = useState();
+  useEffect(() => {
+    setUnComplete(todos.filter((todo) => todo.isCompleted === false).length);
+  }, [todos]);
   return (
     <div className="footer">
       <span className="todo-count">
-        <strong>2</strong>
+        <strong>{unComplete}</strong>
         items left
       </span>
 
@@ -18,7 +23,22 @@ function Footer() {
         </li>
       </ul>
 
-      <button className="clear-completed">Clear completed</button>
+      <button
+        className="clear-completed"
+        onClick={() =>
+          setTodos(
+            todos.map((todo) => {
+              return {
+                id: todo.id,
+                todoText: todo.todoText,
+                isCompleted: false,
+              };
+            })
+          )
+        }
+      >
+        Clear completed
+      </button>
     </div>
   );
 }

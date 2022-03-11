@@ -16,8 +16,30 @@ function Todos() {
   };
 
   const deleteTodo = (id) => {
+    // Eşleşen elemanın dışındaki tüm objeleri alıp state güncelledik
     setTodos(todos.filter((todo) => id !== todo.id));
   };
+
+  const allToggleCompleted = (isToggleAllChecked, setIsToggleChecked) => {
+    if (isToggleAllChecked) {
+      // const updatedTodo = todos.filter((todo) => todo.isCompleted === false).map(todo => todo.isCompleted = true);
+      setTodos(
+        todos.map((todo) => {
+          return { id: todo.id, todoText: todo.todoText, isCompleted: true };
+        })
+      );
+      console.log(todos);
+      setIsToggleChecked(false);
+    } else {
+      setTodos(
+        todos.map((todo) => {
+          return { id: todo.id, todoText: todo.todoText, isCompleted: false };
+        })
+      );
+      setIsToggleChecked(true);
+    }
+  };
+
   return (
     <div className="todo-container">
       <Header setTodos={setTodos} todos={todos} />
@@ -26,8 +48,9 @@ function Todos() {
         setTodos={setTodos}
         completeTodo={completeTodo}
         deleteTodo={deleteTodo}
+        allToggleCompleted={allToggleCompleted}
       />
-      <Footer />
+      <Footer todos={todos} setTodos={setTodos} />
     </div>
   );
 }

@@ -1,8 +1,17 @@
 import Todo from './todo';
-function List({ todos, completeTodo, deleteTodo }) {
+import { useState } from 'react';
+function List({ todos, completeTodo, deleteTodo, allToggleCompleted }) {
+  const [isToggleAllChecked, setIsToggleChecked] = useState(true);
   return (
     <div className="main">
-      <input className="toggle-all" type="checkbox" id="toggle-all" />
+      <input
+        className="toggle-all"
+        type="checkbox"
+        id="toggle-all"
+        onChange={() =>
+          allToggleCompleted(isToggleAllChecked, setIsToggleChecked)
+        }
+      />
       <label htmlFor="toggle-all"></label>
       <ul className="todo-list">
         {todos.map((todo, index) => (

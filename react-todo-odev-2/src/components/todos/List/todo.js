@@ -1,4 +1,3 @@
-import React from 'react';
 function Todo({ todo, completeTodo, deleteTodo }) {
   return (
     <li className={todo.isCompleted ? 'completed' : null}>
@@ -6,7 +5,8 @@ function Todo({ todo, completeTodo, deleteTodo }) {
         <input
           className="toggle"
           type="checkbox"
-          onClick={() => completeTodo(todo.id)}
+          onChange={() => completeTodo(todo.id)}
+          checked={todo.isCompleted}
         />
         <label>{todo.todoText}</label>
         <button

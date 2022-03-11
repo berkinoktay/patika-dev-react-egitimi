@@ -216,6 +216,7 @@ button {
 .todo-count {
   float: left;
   text-align: left;
+  position: relative;
 }
 
 .todo-count strong {
@@ -225,6 +226,7 @@ button {
 
 .filters {
   list-style: none;
+  position: relative;
 }
 
 .filters li {
