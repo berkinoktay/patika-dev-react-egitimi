@@ -27,9 +27,9 @@ function User() {
         <strong>Website: </strong> {user.website}
       </p>
 
-      <Link to={`/user/${parseInt(id) - 1}`}>Prev User</Link>
+      <Link to={`/users/${parseInt(id) - 1}`}>Prev User</Link>
       <br></br>
-      <Link to={`/user/${parseInt(id) + 1}`}>Next User</Link>
+      <Link to={`/users/${parseInt(id) + 1}`}>Next User</Link>
     </div>
   );
 }

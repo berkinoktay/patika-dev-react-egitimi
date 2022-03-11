@@ -3,8 +3,13 @@ import React from 'react';
 import Home from './components/Home';
 import About from './components/About';
 import Users from './components/Users';
-import User from './components/User';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Error404 from './components/Error404';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from 'react-router-dom';
 function App() {
   return (
     // Versiyon 5 için kullanımı aşağıdaki şekildedir. Versiyon 6'da bu yapı değişmiştir!
@@ -13,13 +18,30 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              {/* Aktif olan linki stillendirmek için NavLink kullanılır. activeStyle yerine activeClassName verilebilir. */}
+              <NavLink
+                activeStyle={{ backgroundColor: '#000', color: '#fff' }}
+                to="/"
+                exact
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink
+                activeStyle={{ backgroundColor: '#000', color: '#fff' }}
+                to="/about"
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <NavLink
+                activeStyle={{ backgroundColor: '#000', color: '#fff' }}
+                to="/users"
+              >
+                Users
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -30,7 +52,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
           <Route path="/users" component={Users} />
-          <Route path="/user/:id" component={User} />
+          <Route path="*" component={Error404} />
         </Switch>
       </div>
     </Router>
