@@ -46,7 +46,9 @@ function App() {
           <Route
             index
             path="detail"
-            element={<div> Detay sayfası için id girmeniz gerekmektedir.</div>}
+            element={
+              <div> Detay sayfası için geçerli id girmeniz gerekmektedir.</div>
+            }
           />
           <Route path="detail/:id" element={<User />} />
         </Route>

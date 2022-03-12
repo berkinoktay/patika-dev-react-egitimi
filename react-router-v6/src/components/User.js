@@ -6,10 +6,12 @@ function User() {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((res) => setUser(res.data))
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+    if (!(Number(id) > 10)) {
+      axios(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then((res) => setUser(res.data))
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
+    }
   }, [id]);
   return (
     <div>
@@ -32,7 +34,7 @@ function User() {
       <br></br>
       <Link to={`/users/detail/${parseInt(id) + 1}`}>Next User</Link>
 
-      {Number(id) > 10 && <Navigate to="/users" />}
+      {Number(id) > 10 && <Navigate to="/users/detail" />}
     </div>
   );
 }
