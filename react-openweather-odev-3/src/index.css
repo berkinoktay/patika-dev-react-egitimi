@@ -1,14 +1,26 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
   text-decoration: none;
   list-style-type: none;
+}
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    90deg,
+    rgba(64, 158, 184, 1) 0%,
+    rgba(109, 230, 255, 1) 100%
+  );
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 5rem;
 }
 
 code {
@@ -16,22 +28,116 @@ code {
     monospace;
 }
 
-.app {
-  background-color: #282c34;
-  min-height: 100vh;
+.mainContainer {
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  border-radius: 30px;
+  width: 100%;
+  padding: 2rem;
+}
+.mainContainer .currentContainer {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(233 233 233);
+  padding-bottom: 30px;
+}
+.mainContainer .currentContainer .city {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+  position: relative;
+}
+.mainContainer .currentContainer .city::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -35px;
+  background-color: rgb(233 233 233);
+  width: 2px;
+  height: 80%;
+}
+.mainContainer .currentContainer .city select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.mainContainer .currentContainer .currentInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
   justify-content: center;
+}
+.mainContainer .currentContainer .currentInfo .imageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+.mainContainer .currentContainer .currentInfo .imageBox img {
+  width: auto;
+}
+.mainContainer .currentContainer .currentInfo .imageBox h2 {
+  margin: 0;
+  text-transform: capitalize;
+}
+.mainContainer .currentContainer .currentInfo .tempBox {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
-.cityContainer {
-  width: auto;
-  background-color: #eee;
-  padding: 1.4rem;
+.mainContainer .currentContainer .currentInfo .tempBox > p {
+  font-size: 2rem;
   margin-bottom: 20px;
 }
-.weatherContainer {
-  width: auto;
-  background-color: #eee;
-  padding: 1.4rem;
+.mainContainer .currentContainer .currentInfo .tempBox > p span {
+  font-size: 1rem;
+  color: rgb(145, 145, 145);
+}
+.mainContainer .currentContainer .currentInfo .tempBox .temp {
+  padding: 1rem;
+  border-radius: 50px;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.24);
+  width: 140px;
+  border: 1px solid #eee;
+  font-size: 3.4rem;
+}
+.mainContainer .currentContainer .currentInfo .tempBox .temp p {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.mainContainer .currentContainer .currentInfo .tempBox .temp span {
+  font-size: 1.4rem;
+  color: rgb(145, 145, 145);
+}
+.mainContainer .dailyContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.mainContainer .dailyContainer h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.mainContainer .dailyContainer ul {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 10px;
+}
+.mainContainer .dailyContainer ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 3px 5px 0px rgb(0 0 0 / 25%);
+  padding: 10px;
+  border-radius: 10px;
 }
